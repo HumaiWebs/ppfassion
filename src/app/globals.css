@@ -1,26 +1,83 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-primary-gold: #C9A44C;
+  --color-primary-gold-dark: #B38E36;
+  --color-secondary-emerald: #006D5B;
+  --color-secondary-emerald-dark: #004D40;
+  --color-luxury-black: #0F0F0F;
+  --color-warm-ivory: #F8F1E9;
+  --color-soft-gray: #E5E5E5;
+  --color-vibrant-gold: #E8B923;
+
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "Outfit", sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+:root {
+  --background: #F8F1E9;
+  --foreground: #0F0F0F;
+  --primary: #C9A44C;
+  --secondary: #006D5B;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0F0F0F;
+    --foreground: #FFFFFF;
   }
 }
 
 body {
   background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: #E5E5E5;
+  font-family: var(--font-sans);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.gold-gradient {
+  background: linear-gradient(135deg, #C9A44C 0%, #E8B923 50%, #B38E36 100%);
+}
+
+.emerald-gradient {
+  background: linear-gradient(135deg, #006D5B 0%, #004D40 100%);
+}
+
+.gold-emerald-gradient {
+  background: linear-gradient(135deg, #C9A44C 0%, #006D5B 100%);
+}
+
+.glass-morphism {
+  background: rgba(15, 15, 15, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(201, 164, 76, 0.1);
+}
+
+.text-soft {
+  color: #E5E5E5;
+}
+
+.nav-link-hover {
+  position: relative;
+}
+
+.nav-link-hover::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: -4px;
+  left: 0;
+  background-color: #C9A44C;
+  transition: width 0.3s ease;
+}
+
+.nav-link-hover:hover::after {
+  width: 100%;
 }
