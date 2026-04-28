@@ -1,7 +1,42 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setError("");
+
+    try {
+      const res = await fetch("/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        router.push("/admin");
+      } else {
+        setError(data.message || "Login failed");
+      }
+    } catch (err) {
+      setError("Failed to connect to server");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-luxury-black flex flex-col items-center justify-center relative overflow-hidden py-20 px-6">
       {/* Background Decorative Element */}
@@ -20,11 +55,19 @@ export default function LoginPage() {
         </div>
 
         <div className="bg-white/5 backdrop-blur-xl border border-white/10 p-10 md:p-16 shadow-2xl rounded-sm">
-          <form className="space-y-8">
+          <form className="space-y-8" onSubmit={handleSubmit}>
+            {error && (
+              <div className="bg-red-500/10 border border-red-500/20 text-red-500 text-[10px] uppercase tracking-widest p-4 text-center">
+                {error}
+              </div>
+            )}
             <div className="space-y-2">
               <label className="text-[10px] font-bold uppercase tracking-widest text-white/40">Email Address</label>
               <input 
                 type="email" 
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="w-full bg-transparent border-b border-white/10 py-4 text-white focus:outline-none focus:border-primary-gold transition-colors placeholder:text-white/10" 
                 placeholder="designer@ppfassion.com"
               />
@@ -37,13 +80,20 @@ export default function LoginPage() {
               </div>
               <input 
                 type="password" 
+                required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 className="w-full bg-transparent border-b border-white/10 py-4 text-white focus:outline-none focus:border-primary-gold transition-colors placeholder:text-white/10" 
                 placeholder="••••••••"
               />
             </div>
 
-            <button className="w-full bg-primary-gold hover:bg-vibrant-gold text-luxury-black font-bold py-6 uppercase tracking-widest text-xs transition-all shadow-lg active:scale-95">
-              Access Dashboard
+            <button 
+              type="submit"
+              disabled={loading}
+              className="w-full bg-primary-gold hover:bg-vibrant-gold text-luxury-black font-bold py-6 uppercase tracking-widest text-xs transition-all shadow-lg active:scale-95 disabled:opacity-50"
+            >
+              {loading ? "Authenticating..." : "Access Dashboard"}
             </button>
           </form>
 
