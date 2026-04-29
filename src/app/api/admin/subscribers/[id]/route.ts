@@ -1,17 +1,18 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import dbConnect from '@/lib/dbConnect';
 import Subscriber from '@/models/Subscriber';
 
 export async function PATCH(
-  req: Request,
-  { params }: { params: { id: string } }
+  req: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await dbConnect();
+    const { id } = await params;
     const { status } = await req.json();
     
     const subscriber = await Subscriber.findByIdAndUpdate(
-      params.id,
+      id,
       { status },
       { new: true }
     );

@@ -58,7 +58,7 @@ export default function RegisterPage({ searchParams }: { searchParams: { plan?: 
             Thank you, {formData.fullName}. Your application for the {planName} tier has been successfully submitted to our review board. 
             We will contact you at {formData.email} within 48 hours.
           </p>
-          <Link href="/" className="inline-block bg-primary-gold text-luxury-black font-bold py-4 px-12 uppercase tracking-widest text-xs">Return Home</Link>
+          <Link href="/" className="inline-block brand-gradient text-white font-bold py-4 px-12 uppercase tracking-widest text-xs">Return Home</Link>
         </div>
       </div>
     );
@@ -203,7 +203,7 @@ export default function RegisterPage({ searchParams }: { searchParams: { plan?: 
             </div>
 
             <div className="flex flex-col items-center gap-6 pt-10">
-                <button className="w-full bg-primary-gold hover:bg-vibrant-gold text-luxury-black font-bold py-6 uppercase tracking-widest text-xs transition-all shadow-lg">
+                <button className="w-full brand-gradient brand-gradient-hover text-white font-bold py-6 uppercase tracking-widest text-xs transition-all shadow-lg">
                     Submit Membership Application
                 </button>
                 <p className="text-[9px] text-luxury-black/30 dark:text-white/30 text-center uppercase tracking-widest leading-loose">

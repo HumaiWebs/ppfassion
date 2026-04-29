@@ -56,12 +56,12 @@ const tiers = [
 
 export default function MembershipPage() {
   return (
-    <div className="bg-luxury-black min-h-screen py-20 pb-40">
+    <div className="bg-luxury-black min-h-screen py-32 pb-40">
       <div className="container mx-auto px-6">
-        <div className="text-center max-w-3xl mx-auto mb-32">
-          <h1 className="text-primary-gold font-bold uppercase tracking-[0.4em] mb-6 animate-in fade-in slide-in-from-bottom-4 duration-1000">Membership</h1>
-          <h2 className="text-5xl md:text-7xl font-serif font-bold mb-8 text-white">Elevate Your Presence</h2>
-          <p className="text-xl text-white/50 leading-relaxed">
+        <div className="max-w-4xl mb-20 md:mb-32 border-l-2 border-primary-gold/20 pl-6 md:pl-10">
+          <h1 className="text-primary-gold font-bold uppercase tracking-[0.4em] mb-6 text-[10px]">Membership Tiers</h1>
+          <h2 className="text-4xl md:text-[7rem] font-serif font-bold text-white mb-10 leading-[0.9] tracking-tighter">Elevate Your <br />Presence</h2>
+          <p className="text-xl text-white/50 leading-relaxed max-w-2xl">
             Choose the tier that matches your ambition. Join a community of excellence 
             and unlock exclusive opportunities in the global Pakistani fashion industry.
           </p>
@@ -71,36 +71,36 @@ export default function MembershipPage() {
           {tiers.map((tier) => (
             <div 
               key={tier.name}
-              className={`relative flex flex-col p-10 rounded-sm transition-all duration-500 transform hover:-translate-y-4 ${
+              className={`relative flex flex-col p-12 rounded-sm transition-all duration-700 transform hover:-translate-y-4 group ${
                 tier.popular 
-                  ? "bg-luxury-black text-white border-2 border-primary-gold shadow-[0_0_50px_rgba(201,164,76,0.15)] scale-105 z-10" 
-                  : "bg-white/5 backdrop-blur-sm border border-white/5 hover:border-primary-gold/30"
+                  ? "bg-white/[0.03] text-white border-2 border-primary-gold shadow-[0_0_80px_rgba(194,2,122,0.15)] scale-105 z-10" 
+                  : "bg-white/[0.02] backdrop-blur-sm border border-white/5 hover:border-primary-gold/30"
               }`}
             >
               {tier.popular && (
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-primary-gold text-luxury-black text-[10px] font-bold uppercase tracking-widest px-4 py-1 rounded-full">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 brand-gradient text-white text-[10px] font-bold uppercase tracking-widest px-8 py-2 rounded-full shadow-2xl">
                   Most Popular
                 </div>
               )}
 
-              <div className="mb-8">
-                <h3 className={`text-2xl font-serif font-bold mb-2 ${tier.popular ? "text-primary-gold" : ""}`}>
+              <div className="mb-12">
+                <h3 className={`text-3xl font-serif font-bold mb-4 ${tier.popular ? "text-primary-gold italic" : "text-white"}`}>
                   {tier.name}
                 </h3>
-                <div className="flex items-baseline gap-1 mb-4">
-                  <span className="text-4xl font-bold">{tier.price}</span>
-                  <span className="text-sm opacity-60">/month</span>
+                <div className="flex items-baseline gap-2 mb-6">
+                  <span className="text-5xl font-bold tracking-tighter text-white">{tier.price}</span>
+                  <span className="text-sm uppercase tracking-widest opacity-40">/ Month</span>
                 </div>
-                <p className="text-sm opacity-70 leading-relaxed font-medium">
+                <p className="text-sm text-white/50 leading-relaxed font-medium">
                   {tier.description}
                 </p>
               </div>
 
-              <div className="flex-1 mb-10">
-                <ul className="space-y-4">
+              <div className="flex-1 mb-12">
+                <ul className="space-y-5">
                   {tier.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-3 text-sm">
-                      <svg className={`w-5 h-5 flex-shrink-0 ${tier.popular ? "text-primary-gold" : "text-secondary-emerald"}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <li key={feature} className="flex items-start gap-4 text-xs font-medium text-white/70">
+                      <svg className={`w-5 h-5 flex-shrink-0 ${tier.popular ? "text-primary-gold" : "text-primary-gold/40"}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                       </svg>
                       {feature}
@@ -111,17 +111,17 @@ export default function MembershipPage() {
 
               <Link
                 href={`/register?plan=${tier.name.toLowerCase()}`}
-                className={`text-center font-bold py-4 rounded-sm transition-all uppercase tracking-widest text-xs ${
+                className={`text-center font-bold py-5 rounded-sm transition-all uppercase tracking-widest text-[10px] shadow-2xl ${
                   tier.popular
-                    ? "bg-primary-gold text-luxury-black hover:bg-vibrant-gold"
-                    : "bg-luxury-black text-white dark:bg-warm-ivory dark:text-luxury-black hover:bg-primary-gold dark:hover:bg-primary-gold"
+                    ? "brand-gradient text-white brand-gradient-hover"
+                    : "bg-white/5 text-white hover:brand-gradient"
                 }`}
               >
                 {tier.cta}
               </Link>
               
-              <div className="mt-4 text-center">
-                <p className="text-[10px] opacity-40 uppercase tracking-tighter">
+              <div className="mt-6 text-center">
+                <p className="text-[10px] opacity-20 uppercase tracking-[0.2em] font-bold">
                   Or {tier.yearlyPrice} annually (save 15%)
                 </p>
               </div>
@@ -130,14 +130,14 @@ export default function MembershipPage() {
         </div>
 
         {/* Benefits Table */}
-        <div className="mt-48 overflow-x-auto">
-          <table className="w-full text-left border-collapse">
+        <div className="mt-32 md:mt-48 overflow-x-auto bg-white/[0.01] border border-white/5 p-6 md:p-12">
+          <table className="w-full text-left border-collapse min-w-[600px]">
             <thead>
-              <tr className="border-b border-primary-gold/20">
-                <th className="py-10 px-6 font-serif text-3xl uppercase tracking-tighter text-white">The Capability Matrix</th>
-                <th className="py-10 px-6 text-center font-bold text-white/30 uppercase tracking-widest text-[10px]">Basic</th>
-                <th className="py-10 px-6 text-center font-bold text-primary-gold uppercase tracking-widest text-[10px]">Premium</th>
-                <th className="py-10 px-6 text-center font-bold text-secondary-emerald uppercase tracking-widest text-[10px]">Elite</th>
+              <tr className="border-b border-white/10">
+                <th className="py-8 md:py-12 px-4 md:px-8 font-serif text-2xl md:text-4xl font-bold uppercase tracking-tighter text-white italic">Capability Matrix</th>
+                <th className="py-12 px-8 text-center font-bold text-white/20 uppercase tracking-[0.3em] text-[10px]">Basic</th>
+                <th className="py-12 px-8 text-center font-bold text-primary-gold uppercase tracking-[0.3em] text-[10px]">Premium</th>
+                <th className="py-12 px-8 text-center font-bold text-primary-gold uppercase tracking-[0.3em] text-[10px]">Elite</th>
               </tr>
             </thead>
             <tbody className="text-sm">
@@ -149,16 +149,16 @@ export default function MembershipPage() {
                 { label: "Dedicated Brand Landing Page", basic: false, premium: false, elite: true },
                 { label: "Wholesale Buyer Connections", basic: false, premium: false, elite: true },
               ].map((row) => (
-                <tr key={row.label} className="border-b border-white/5 hover:bg-white/[0.02] transition-colors group">
-                  <td className="py-8 px-6 font-bold uppercase tracking-widest text-[10px] text-white/50 group-hover:text-primary-gold transition-colors">{row.label}</td>
-                  <td className="py-8 px-6 text-center text-white/60">
-                    {typeof row.basic === "boolean" ? (row.basic ? "✓" : "-") : row.basic}
+                <tr key={row.label} className="border-b border-white/5 hover:bg-white/[0.02] transition-all group">
+                  <td className="py-10 px-8 font-bold uppercase tracking-[0.2em] text-[9px] text-white/40 group-hover:text-primary-gold transition-colors">{row.label}</td>
+                  <td className="py-10 px-8 text-center text-white/30">
+                    {row.basic === true ? <span className="text-xl">✓</span> : (row.basic === false ? "-" : <span className="font-bold tracking-widest uppercase text-[10px]">{row.basic}</span>)}
                   </td>
-                  <td className="py-8 px-6 text-center text-primary-gold font-bold">
-                    {typeof row.premium === "boolean" ? (row.premium ? "✓" : "-") : row.premium}
+                  <td className="py-10 px-8 text-center text-primary-gold font-bold">
+                    {row.premium === true ? <span className="text-xl">✓</span> : (row.premium === false ? "-" : <span className="font-bold tracking-widest uppercase text-[10px]">{row.premium}</span>)}
                   </td>
-                  <td className="py-8 px-6 text-center text-secondary-emerald font-bold">
-                    {typeof row.elite === "boolean" ? (row.elite ? "✓" : "-") : row.elite}
+                  <td className="py-10 px-8 text-center text-primary-gold font-bold">
+                    {row.elite === true ? <span className="text-xl">✓</span> : (row.elite === false ? "-" : <span className="font-bold tracking-widest uppercase text-[10px]">{row.elite}</span>)}
                   </td>
                 </tr>
               ))}

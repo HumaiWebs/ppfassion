@@ -70,6 +70,20 @@ export default function AdminDashboard() {
     setLoading(false);
   };
 
+  const handleSeed = async () => {
+    try {
+      const res = await fetch('/api/admin/seed', { method: 'POST' });
+      const data = await res.json();
+      if (data.success) {
+        fetchData();
+      } else {
+        console.error('Seed failed:', data.error);
+      }
+    } catch (err) {
+      console.error('Seed error', err);
+    }
+  };
+
   const handleLogout = async () => {
     await fetch("/api/logout", { method: "POST" });
     router.push("/login");
