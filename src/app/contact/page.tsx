@@ -9,8 +9,8 @@ export default function ContactPage() {
             <h1 className="text-primary-gold font-bold uppercase tracking-[0.4em] mb-6 text-[10px]">Contact the Collective</h1>
             <h2 className="text-4xl md:text-[7rem] font-serif font-bold mb-12 text-white leading-[0.9] tracking-tighter">Get in <br />Touch</h2>
             <p className="text-xl text-white/50 mb-16 leading-relaxed max-w-xl font-medium">
-              Whether you are an elite designer looking to join the collective, 
-              a brand seeking global collaboration, or a member of the press, 
+              Whether you are an elite designer looking to join the collective,
+              a brand seeking global collaboration, or a member of the press,
               we are ready to connect you with excellence.
             </p>
 
@@ -25,7 +25,7 @@ export default function ContactPage() {
               </div>
               <div className="group border-t border-white/5 pt-10">
                 <h3 className="text-primary-gold font-bold uppercase tracking-[0.3em] text-[10px] mb-4 group-hover:translate-x-2 transition-transform duration-500">HQ Address</h3>
-                <p className="text-xl md:text-3xl font-serif text-white hover:italic transition-all cursor-pointer leading-tight">124 St Vincent St, <br/>Glasgow G2 5HF, UK</p>
+                <p className="text-xl md:text-3xl font-serif text-white hover:italic transition-all cursor-pointer leading-tight">124 St Vincent St, <br />Glasgow G2 5HF, UK</p>
               </div>
             </div>
           </div>
